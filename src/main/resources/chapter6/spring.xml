@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	">
+    <!--
+        singleton:默认值，容器初始时创建bean实例，在整个容器的生命周期只创建这一个bean，单例的。
+        protptype：原型的，容器初始时不创建bean的实例，而在每次请求时都创建一个新的bean实例，并返回。
+    -->
+
+    <!--
+        spEL表达式
+        支持运行时查询和操作对象图的强大的表达式语言
+        使用#{}作为定界符，写在里面的都认为是SPEL,可以是字面量、表达式等
+    -->
+    <bean id="person" class="com.chapter6.Person">
+        <property name="name" value="你好"/>
+    </bean>
+    <bean id="car" class="com.chapter6.Car">
+        <property name="name" value="#{person.getName()}"/>
+    </bean>
+</beans>
