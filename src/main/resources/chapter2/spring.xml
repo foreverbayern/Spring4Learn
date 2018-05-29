@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	">
+    <!-- 属性注入 -->
+    <bean id="person1" class="com.chapter2.Person">
+        <property name="name" value="你好"/>
+    </bean>
+    <!-- 构造器注入,指定参数位置和参数类型，用来区分重载的问题 -->
+    <bean id="person2" class="com.chapter2.Person">
+        <!-- 如果使用特殊字符，用<![CDATA[]] 包裹起来-->
+        <constructor-arg  index="0" type="java.lang.String">
+            <value><![CDATA[<你不好>]]></value>
+        </constructor-arg>
+    </bean>
+</beans>
