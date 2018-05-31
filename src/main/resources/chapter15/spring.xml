@@ -22,12 +22,12 @@
         声明式事务
      -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="user" value="${db.user}"/>
-        <property name="password" value="${db.password}"/>
-        <property name="driverClass" value="${db.driverClass}"/>
-        <property name="jdbcUrl" value="${db.jdbcUrl}"/>
-        <property name="initialPoolSize" value="${db.initialPoolSize}"/>
-        <property name="maxPoolSize" value="${db.maxPoolSize}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
     </bean>
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
@@ -44,4 +44,11 @@
         使用transactional
      -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--
+        事务传播行为
+        一个事务被另一个事务方法调用的时候，必须指定事务应该怎么传播，
+        例如方法可能继续在现有事务中运行，也可能开启一个新事务，并在自己事务中运行
+
+    -->
 </beans>
